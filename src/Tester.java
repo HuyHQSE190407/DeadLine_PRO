@@ -9,6 +9,7 @@
  */
 public class Tester {
     public static void main(String[] args) {
-        
+        Staff st = new Staff();
+        st.input();
     }
 }

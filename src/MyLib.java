@@ -40,7 +40,7 @@ public class MyLib {
             if (!input.isEmpty()) {
                 return input;
             } else {
-                System.out.println("❌ Input must not be empty.");
+                System.out.println("Input must not be empty.");
             }
         }
     }

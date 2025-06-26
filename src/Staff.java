@@ -1,16 +1,22 @@
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author HUYHQSE190407
  */
 public class Staff {
-    private String id;
-    private String name;
-    private String email;
+
+    private String id; //done
+    private String name; //done
+    private String email; //done
     private String phone;
     private String password;
     private String DoB;
@@ -19,8 +25,6 @@ public class Staff {
     public Staff() {
     }
 
-    
-    
     public Staff(String id, String name, String email, String phone, String password, String DoB, int salary) {
         this.id = id;
         this.name = name;
@@ -87,16 +91,62 @@ public class Staff {
         this.salary = salary;
     }
 
-    
     public void input() {
+        while (true) {
+            String regex = "^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$";
+            Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+            try {
+                id = MyLib.inputString("Enter id: ");
+                Matcher matcher = pattern.matcher(id);
+                if (matcher.matches()) {
+                    System.out.println("Your valid id is: " + id);
+                    break;
+                } else {
+                    System.out.println("your length of id must be had 6 to 16 character");
+                }
+            } catch (Exception ex) {
+                System.out.println("Invalid id!");
+            }
+        }
         
+        while (true) {
+            String regex = "^(?=.*[a-zA-Z])[a-zA-Z\\s]+$";
+            Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+            try {
+                name = MyLib.inputString("Enter name: ");
+                Matcher matcher = pattern.matcher(name);
+                if (matcher.matches()) {
+                    System.out.println("Your valid name is: " + name);
+                    break;
+                } else {
+                    System.out.println("your name must be followed(a-z)");
+                }
+            } catch (Exception ex) {
+                System.out.println("Invalid name!");
+            }
+        }
+        
+         while (true) {
+            String regex = "^(?=.*[a-zA-Z])[a-zA-Z0-9._]{6,}@[a-zA-Z]+\\.[a-zA-Z]{2,}$";
+            Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+            try {
+                email = MyLib.inputString("Enter email: ");
+                Matcher matcher = pattern.matcher(email);
+                if (matcher.matches()) {
+                    System.out.println("Your valid name is: " + email);
+                    break;
+                } else {
+                    System.out.println("your email must be followed(username(_)@gmail.com) and has length at least 6");
+                }
+            } catch (Exception ex) {
+                System.out.println("Invalid email!");
+            }
+        }
     }
-    
-    
-    
+
     @Override
     public String toString() {
         return "Staff{" + "id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password=" + password + ", DoB=" + DoB + ", salary=" + salary + '}';
     }
-    
+
 }
